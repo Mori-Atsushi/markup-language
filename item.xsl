@@ -5,7 +5,7 @@
 
 <xsl:template match="books/item">
 <h3><xsl:value-of select="title" /> | <xsl:apply-templates select="creator" /></h3>
-<p><xsl:value-of select="description" /></p>
+<p><xsl:apply-templates select="description" /></p>
 <ul>
   <li>出版社：<xsl:value-of select="publisher" /></li>
   <li>出版日：<xsl:apply-templates select="date" /></li>
@@ -46,6 +46,27 @@
       <xsl:value-of select="." />(<xsl:value-of select="count(//books/item[keywords/keyword=current()])"/>)
     </a> / 
   </xsl:for-each>
+</xsl:template>
+
+<xsl:template match="description">
+  <xsl:call-template name="replace-new-line">
+    <xsl:with-param name="str" select="." />
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template name="replace-new-line">
+  <xsl:param name="str" />
+  <xsl:choose>
+    <xsl:when test="contains($str, '&#10;')">
+      <xsl:value-of select="substring-before($str, '&#10;')" /><br />
+      <xsl:call-template name="replace-new-line">
+        <xsl:with-param name="str" select="substring-after($str, '&#10;')" />
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$str" />
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>
