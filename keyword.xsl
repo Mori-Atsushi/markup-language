@@ -11,10 +11,8 @@
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
     <h2>keyword：<xsl:value-of select="$keyword" /></h2>
-    <xsl:for-each select="books/item/keywords/keyword">
-      <xsl:if test="normalize-space(.) = $keyword">
-        <a><xsl:value-of select="../../title" /></a> /
-      </xsl:if>
+    <xsl:for-each select="books/item[keywords/keyword=$keyword]">
+      <a><xsl:value-of select="title" /></a> /
     </xsl:for-each>
   </body>
 </html>

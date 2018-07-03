@@ -7,7 +7,7 @@
 </xsl:text>
   <xsl:for-each select="books/item/keywords/keyword[not(.=preceding::keyword)]">
     <xsl:text>xsltproc --stringparam keyword "</xsl:text>
-    <xsl:value-of select="normalize-space(.)" />
+    <xsl:value-of select="." />
     <xsl:text>" -o "output/keyword/</xsl:text>
     <xsl:value-of select="normalize-space(.)" />
     <xsl:text>.html" keyword.xsl data/books.xml
