@@ -12,7 +12,12 @@
     <h2>keyword一覧</h2>
     <xsl:for-each select="books/item/keywords/keyword[not(.=preceding::keyword)]">
       <xsl:sort select="normalize-space(.)" data-type="text" order="ascending" />
-      <a><xsl:value-of select="normalize-space(.)"/></a> / 
+      <a>
+        <xsl:attribute name="href">
+          <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
+        </xsl:attribute>
+        <xsl:value-of select="normalize-space(.)"/>
+      </a> / 
     </xsl:for-each>
   </body>
 </html>
