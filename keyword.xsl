@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
-    <h2>キーワード：<xsl:value-of select="$keyword" /></h2>
+    <nav><a href="../index.html">TOP</a> > <a href="../keyword.html">キーワード一覧</a> > <xsl:value-of select="$keyword" /></nav>
     <xsl:apply-templates select="books/item[keywords/keyword=$keyword]" />
   </body>
 </html>

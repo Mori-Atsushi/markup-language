@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
-    <h2>著者：<xsl:value-of select="$creator" /></h2>
+    <nav><a href="../index.html">TOP</a> > <a href="../creator.html">著者一覧</a> > <xsl:value-of select="$creator" /></nav>
     <xsl:apply-templates select="books/item[creator=$creator]" />
   </body>
 </html>
