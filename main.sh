@@ -1,0 +1,1 @@
+xsltproc -o output/index.html main.xsl data/books.xml
