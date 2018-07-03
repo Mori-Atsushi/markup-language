@@ -4,7 +4,7 @@
 <xsl:param name="keyword"/>
 
 <xsl:template match="books/item">
-<h3><xsl:value-of select="title" /> | <xsl:value-of select="creator" /></h3>
+<h3><xsl:value-of select="title" /> | <xsl:apply-templates select="creator" /></h3>
 <p><xsl:value-of select="description" /></p>
 <ul>
   <li>出版社：<xsl:value-of select="publisher" /></li>
@@ -13,6 +13,15 @@
   <li>関連リンク：<xsl:apply-templates select="url" /></li>
   <li>キーワード：<xsl:apply-templates select="keywords" /></li>
 </ul>
+</xsl:template>
+
+<xsl:template match="creator">
+  <a>
+    <xsl:attribute name="href">
+    <xsl:text>../creator/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
+    </xsl:attribute>
+    <xsl:value-of select="." />
+  </a>
 </xsl:template>
 
 <xsl:template match="date">
