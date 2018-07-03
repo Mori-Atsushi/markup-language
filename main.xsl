@@ -10,15 +10,20 @@
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
     <h2>keyword一覧</h2>
-    <xsl:for-each select="books/item/keywords/keyword[not(.=preceding::keyword)]">
-      <xsl:sort select="normalize-space(.)" data-type="text" order="ascending" />
-      <a>
-        <xsl:attribute name="href">
-          <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
-        </xsl:attribute>
-        <xsl:value-of select="normalize-space(.)"/>
-      </a> / 
-    </xsl:for-each>
+    <ul>
+      <xsl:for-each select="books/item/keywords/keyword[not(.=preceding::keyword)]">
+        <xsl:variable name="keyword" select="." />
+        <xsl:sort select="normalize-space(.)" data-type="text" order="ascending" />
+        <li>
+          <a>
+            <xsl:attribute name="href">
+              <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
+            </xsl:attribute>
+            <xsl:value-of select="normalize-space(.)"/>
+          </a> | <xsl:value-of select="count(//books/item[keywords/keyword=$keyword])"/> 件
+        </li>
+      </xsl:for-each>
+    </ul>
   </body>
 </html>
 </xsl:template>
