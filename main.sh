@@ -1,1 +1,3 @@
-xsltproc -o output/index.html main.xsl data/books.xml
+xsltproc -o generated.sh generate_sh.xsl data/books.xml
+sh generated.sh
+rm -f generated.sh
