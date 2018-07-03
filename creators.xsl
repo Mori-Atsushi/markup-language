@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
-    <h2>creater一覧</h2>
+    <h2>著者一覧</h2>
     <ul>
       <xsl:apply-templates select="books/item/creator[not(.=preceding::creator)]">
         <xsl:sort select="count(//books/item[creator=current()])" data-type="number" order="descending" />
