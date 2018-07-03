@@ -5,6 +5,8 @@
 <xsl:template match="/">
   <xsl:text>xsltproc -o output/index.html main.xsl data/books.xml
 </xsl:text>
+  <xsl:text>xsltproc -o output/creater.html creaters.xsl data/books.xml
+</xsl:text>
   <xsl:for-each select="books/item/keywords/keyword[not(.=preceding::keyword)]">
     <xsl:text>xsltproc --stringparam keyword "</xsl:text>
     <xsl:value-of select="." />
