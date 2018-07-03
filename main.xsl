@@ -21,14 +21,13 @@
 </xsl:template>
 
 <xsl:template match="books/item/keywords/keyword">
-<xsl:variable name="keyword" select="." />
 <li>
   <a>
     <xsl:attribute name="href">
-      <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space($keyword)" /><xsl:text>.html</xsl:text>
+      <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
     </xsl:attribute>
-    <xsl:value-of select="normalize-space($keyword)"/>
-  </a> | <xsl:value-of select="count(//books/item[keywords/keyword=$keyword])"/> 件
+    <xsl:value-of select="normalize-space(.)"/>
+  </a> | <xsl:value-of select="count(//books/item[keywords/keyword=current()])"/> 件
 </li>
 </xsl:template>
 
