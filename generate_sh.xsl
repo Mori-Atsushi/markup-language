@@ -3,7 +3,7 @@
 <xsl:output method="text" encoding="UTF-8" />
 
 <xsl:template match="/">
-  <xsl:text>xsltproc -o output/index.html main.xsl data/books.xml
+  <xsl:text>xsltproc -o output/keyword.html keywords.xsl data/books.xml
 </xsl:text>
   <xsl:text>xsltproc -o output/creator.html creators.xsl data/books.xml
 </xsl:text>
