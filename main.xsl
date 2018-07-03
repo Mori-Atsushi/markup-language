@@ -12,6 +12,7 @@
     <h2>keyword一覧</h2>
     <ul>
       <xsl:apply-templates select="books/item/keywords/keyword[not(.=preceding::keyword)]">
+        <xsl:sort select="count(//books/item[keywords/keyword=current()])" data-type="number" order="descending" />
         <xsl:sort select="." data-type="text" order="ascending" />
       </xsl:apply-templates>
     </ul>
