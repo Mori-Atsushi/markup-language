@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1><xsl:value-of select="books/metadata/title" /></h1>
-    <h2>keyword一覧</h2>
+    <h2>キーワード一覧</h2>
     <ul>
       <xsl:apply-templates select="books/item/keywords/keyword[not(.=preceding::keyword)]">
         <xsl:sort select="count(//books/item[keywords/keyword=current()])" data-type="number" order="descending" />
