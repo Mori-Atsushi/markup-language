@@ -14,7 +14,7 @@
     <xsl:text>xsltproc --stringparam keyword "</xsl:text>
     <xsl:value-of select="." />
     <xsl:text>" -o "output/keyword/</xsl:text>
-    <xsl:value-of select="normalize-space(.)" />
+    <xsl:value-of select="translate(., ' ', '-')" />
     <xsl:text>.html" keyword.xsl data/books.xml
 </xsl:text>
   </xsl:for-each>
@@ -23,7 +23,7 @@
     <xsl:text>xsltproc --stringparam creator "</xsl:text>
     <xsl:value-of select="." />
     <xsl:text>" -o "output/creator/</xsl:text>
-    <xsl:value-of select="normalize-space(.)" />
+    <xsl:value-of select="translate(., ' ', '-')" />
     <xsl:text>.html" creator.xsl data/books.xml
 </xsl:text>
   </xsl:for-each>

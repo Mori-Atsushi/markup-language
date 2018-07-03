@@ -24,9 +24,9 @@
 <li>
   <a>
     <xsl:attribute name="href">
-      <xsl:text>./keyword/</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
+      <xsl:text>./keyword/</xsl:text><xsl:value-of select="translate(., ' ', '-')" /><xsl:text>.html</xsl:text>
     </xsl:attribute>
-    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:value-of select="."/>
   </a> | <xsl:value-of select="count(//books/item[keywords/keyword=current()])"/> 件
 </li>
 </xsl:template>
