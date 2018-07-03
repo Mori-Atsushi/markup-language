@@ -47,7 +47,7 @@
       <xsl:attribute name="href">
         <xsl:text>./</xsl:text><xsl:value-of select="normalize-space(.)" /><xsl:text>.html</xsl:text>
       </xsl:attribute>
-      <xsl:value-of select="." />(<xsl:value-of select="count(//books/item[keywords/keyword=$keyword])"/>)
+      <xsl:value-of select="." />(<xsl:value-of select="count(//books/item[keywords/keyword=current()])"/>)
     </a> / 
   </xsl:for-each>
 </xsl:template>
